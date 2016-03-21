@@ -26,6 +26,6 @@ a = vector(k1)
 k2 = input()
 b = vector(k2)
 c = a.scalar(b)
-print((a+b).x)
-print((a-b).x)
-print(c)
+print "summa =", (a+b).x
+print "raznost =", (a-b).x
+print "skalarnoe =", c
