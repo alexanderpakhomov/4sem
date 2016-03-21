@@ -1,37 +1,31 @@
-class vector:
+class vector():
+    
+    def __init__(self, x):
+        self.x = x
 
-    def __init__(self, coords):
-        self.coordinates = coords
+    def __add__(self, b):
+        c = vector(range(0,len(self.x)))
+        for i in range(0, len(self.x)):
+            c.x[i] = self.x[i] + b.x[i]
+        return c
 
-    def __add__(self, obj):
-        ret = self.coordinates[:]
-        for i in range(len(obj.coordinates)):
-            try:
-                ret[i] += obj.coordinates[i]
-            except:
-                ret.append(obj.coodinates[i])
-        return vector(ret)
+    def __sub__(self, b):
+        d = vector(range(0,len(self.x)))
+        for i in range(0, len(self.x)):
+            d.x[i] = self.x[i] - b.x[i]
+        return d
 
-    def sub(self, obj):
-        for i in range(len(obj.coordinates)):
-            try:
-                self.coordinates[i] -= obj.coordinates[i]
-            except:
-                self.coordinates.append(-obj.coordinates[i])
+    def scalar(self, b):
+        c = 0
+        for i in range(0,len(self.x)):
+            c = c + self.x[i] * b.x[i]
+        return c
 
-    def print_vector(self):
-        string = ''
-        for i in range(len(self.coordinates)):
-            if not len(string) == 0:
-                string += ':'
-                string += str(self.coordinates[i])
-        print(string)
-
-
-a = vector([3, 4, 6, 13, 55, 13])
-b = vector([3, 1, 2, 3])
-a += a
-
-a.print_vector()
-b.sub(a)
-b.print_vector()
+k1 = input()
+a = vector(k1)
+k2 = input()
+b = vector(k2)
+c = a.scalar(b)
+print((a+b).x)
+print((a-b).x)
+print(c)
